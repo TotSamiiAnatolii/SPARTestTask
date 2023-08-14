@@ -7,13 +7,6 @@
 
 import UIKit
 
-enum SectionType: Int {
-    case stories
-    case banner
-    case offer
-    case main
-}
-
 protocol MainViewProtocol: AnyObject {
     
     func succes(models: Any)
@@ -39,14 +32,8 @@ final class MainViewController: UIViewController {
     
     private var presenter: MainPresenterProtocol
     
-    private var stroiesList: [ModelStoriesCell] = [ModelStoriesCell(id: "1"), ModelStoriesCell(id: "2"), ModelStoriesCell(id: "3"), ModelStoriesCell(id: "4"), ModelStoriesCell(id: "5"), ModelStoriesCell(id: "6"), ModelStoriesCell(id: "7"), ModelStoriesCell(id: "8"), ModelStoriesCell(id: "9"), ModelStoriesCell(id: "10")]
-    
-    private var bannersList: [ModelBannerCell] = [ModelBannerCell(id: "6", image: Images.promotion1), ModelBannerCell(id: "7", image: Images.promotion2), ModelBannerCell(id: "8", image: Images.promotion3), ModelBannerCell(id: "9", image: Images.promotion4), ModelBannerCell(id: "10", image: Images.promotion5)]
-    
-    private var offersList: [ModelOfferCell] = [ModelOfferCell(id: "11"), ModelOfferCell(id: "12"), ModelOfferCell(id: "13"), ModelOfferCell(id: "14"), ModelOfferCell(id: "15")]
-    
-    private var mainList: [ModelMainCell] = [ModelMainCell(id: "16", image: Images.pr1), ModelMainCell(id: "17", image: Images.pr2), ModelMainCell(id: "18", image: Images.pr3), ModelMainCell(id: "19", image: Images.pr4), ModelMainCell(id: "20", image: Images.pr5)]
-    
+    private let myDataSource = DataSource()
+
     //MARK: - Init
     init(presenter: MainPresenter) {
         self.presenter = presenter
@@ -66,63 +53,80 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         configureCollectionView()
         createDataSource()
-        reloadData(stories: stroiesList, banners: bannersList, offers: offersList, main: mainList)
+        configureNavigationBar()
+        reloadData(stories: myDataSource.stroiesList,
+                   banners: myDataSource.bannersList,
+                   offers: myDataSource.offersList,
+                   main: myDataSource.categories[SectionType.main.nameTitle]!,
+                   sweetMood: myDataSource.categories[SectionType.sweetMood.nameTitle]!)
     }
     
     private func configureCollectionView() {
         mainView.collectionView.collectionViewLayout = createCompositionalLayout()
-        
         mainView.collectionView.register(StoriesCell.self, forCellWithReuseIdentifier: StoriesCell.identifire)
-        
         mainView.collectionView.register(BannerCell.self, forCellWithReuseIdentifier: BannerCell.identifire)
-        
         mainView.collectionView.register(OfferCell.self, forCellWithReuseIdentifier: OfferCell.identifire)
-        
         mainView.collectionView.register(MainCell.self, forCellWithReuseIdentifier: MainCell.identifire)
-        
         mainView.collectionView.register(HeaderForProducts.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderForProducts.identifire)
-        
         mainView.collectionView.register(HeaderForOffer.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderForOffer.identifire)
+        mainView.collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 40, right: 0)
+    }
+    
+    private func configureNavigationBar() {
+        guard let navigationController else {
+            return
+        }
+        let heightNavBar = navigationController.navigationBar.bounds.height
+        let widthNavBar = navigationController.navigationBar.bounds.width
         
-        mainView.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 90, right: 0)
+        let searchBar = CitySelectionTextField(image: Images.geoTag, frame: CGRect(x: 0, y: 0, width: widthNavBar, height: heightNavBar - 5))
+        searchBar.text = "Москва, Москва и Московская область"
+
+        let menuButton = UIBarButtonItem(image: Images.listButton, landscapeImagePhone: nil, style: .done, target: self, action: nil)
+        
+        self.setupNavBar(leftItem: nil, rightItem: menuButton, titleView: searchBar)
     }
     
     private func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<SectionType, AnyHashable>(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             
-            let section = SectionType(rawValue: indexPath.section)
+            guard let section = SectionType(rawValue: indexPath.section) else { return UICollectionViewCell()}
             
             switch section {
             case .stories:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoriesCell.identifire, for: indexPath) as? StoriesCell else {
                     return UICollectionViewCell()
                 }
-                cell.configure(with: self.stroiesList[indexPath.row])
+                cell.configure(with: self.myDataSource.stroiesList[indexPath.row])
                 return cell
                 
             case .banner:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCell.identifire, for: indexPath) as? BannerCell else {
                     return UICollectionViewCell()
                 }
-                cell.configure(with: self.bannersList[indexPath.row])
+                cell.configure(with: self.myDataSource.bannersList[indexPath.row])
                 return cell
                 
             case .offer:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OfferCell.identifire, for: indexPath) as? OfferCell else {
                     return UICollectionViewCell()
                 }
-                cell.configure(with: self.offersList[indexPath.row])
+                cell.configure(with: self.myDataSource.offersList[indexPath.row])
                 return cell
                 
             case .main:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCell.identifire, for: indexPath) as? MainCell else {
                     return UICollectionViewCell()
                 }
-                cell.configure(with: self.mainList[indexPath.row])
+                cell.configure(with: (self.myDataSource.categories[section.nameTitle]?[indexPath.row])!)
                 return cell
-
-            case .none:
-                return UICollectionViewCell()
+                
+            case .sweetMood:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCell.identifire, for: indexPath) as? MainCell else {
+                    return UICollectionViewCell()
+                }
+                cell.configure(with: (self.myDataSource.categories[section.nameTitle]?[indexPath.row])!)
+                return cell
             }
         })
         
@@ -136,21 +140,30 @@ final class MainViewController: UIViewController {
             switch section {
             
             case .offer:
-                let view = collectionView.dequeueReusableSupplementaryView(
+                guard let view = collectionView.dequeueReusableSupplementaryView(
                     ofKind: kind,
                     withReuseIdentifier: HeaderForOffer.identifire,
-                    for: indexPath) as? HeaderForOffer
+                    for: indexPath) as? HeaderForOffer else { return UICollectionReusableView() }
                 
-                view?.configure(with: ModelHeaderView())
+                view.configure(with: ModelHeaderView(title: nil))
                 return view
                 
             case .main:
+                guard let view = collectionView.dequeueReusableSupplementaryView(
+                    ofKind: kind,
+                    withReuseIdentifier: HeaderForProducts.identifire,
+                    for: indexPath) as? HeaderForProducts else { return UICollectionReusableView() }
+
+                view.configure(with: ModelHeaderView(title: section.nameTitle))
+                return view
+                
+            case .sweetMood:
                 let view = collectionView.dequeueReusableSupplementaryView(
                     ofKind: kind,
                     withReuseIdentifier: HeaderForProducts.identifire,
                     for: indexPath) as? HeaderForProducts
 
-                view?.configure(with: ModelHeaderView())
+                view?.configure(with: ModelHeaderView(title: section.nameTitle))
                 return view
                 
             default:
@@ -162,14 +175,16 @@ final class MainViewController: UIViewController {
     private func reloadData(stories: [ModelStoriesCell],
                             banners: [ModelBannerCell],
                             offers: [ModelOfferCell],
-                            main: [ModelMainCell]) {
-        
+                            main: [ModelMainCell],
+                            sweetMood: [ModelMainCell]) {
+    
         var snapshot = NSDiffableDataSourceSnapshot<SectionType, AnyHashable>()
-        snapshot.appendSections([.stories, .banner, .offer, .main])
+        snapshot.appendSections([.stories, .banner, .offer, .main, .sweetMood])
         snapshot.appendItems(stories, toSection: .stories)
         snapshot.appendItems(banners, toSection: .banner)
         snapshot.appendItems(offers, toSection: .offer)
         snapshot.appendItems(main, toSection: .main)
+        snapshot.appendItems(sweetMood, toSection: .sweetMood)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
@@ -186,8 +201,11 @@ final class MainViewController: UIViewController {
                 return self.compositionalLayout.setOfferFlowLayout()
             case .main:
                 return self.compositionalLayout.setProductFlowLayout()
+            case .sweetMood:
+                return self.compositionalLayout.setProductFlowLayout()
             case .none:
                return nil
+
             }
         }
         return layout

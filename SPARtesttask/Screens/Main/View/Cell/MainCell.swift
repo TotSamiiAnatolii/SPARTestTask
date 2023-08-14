@@ -10,7 +10,7 @@ import UIKit
 final class MainCell: UICollectionViewCell {
     
     static let identifire = "MainCell"
-    
+        
     private let productImage = UIImageView()
         .setMyStyle()
     
@@ -20,8 +20,8 @@ final class MainCell: UICollectionViewCell {
         .setMyStyle(
             numberOfLines: 1,
             textAlignment: .center,
-            font: UIFont.boldSystemFont(ofSize: 15))
-        .setTextColor(color: UIColor.black)
+            font: Fonts.priceProductCell)
+        .setTextColor(color: Colors.priceProductCell)
     
     private let mainStack = UIStackView()
         .myStyleStack(
@@ -30,7 +30,10 @@ final class MainCell: UICollectionViewCell {
             axis: .vertical,
             distribution: .equalSpacing,
             userInteraction: false)
-        .setLayoutMargins(top: 5, left: 5, bottom: 0, right: 5)
+        .setLayoutMargins(top: ProjectDesign.indentProductCell,
+                          left: ProjectDesign.indentProductCell,
+                          bottom: ProjectDesign.indentProductCell,
+                          right: ProjectDesign.indentProductCell)
     
     private let priceStack = UIStackView()
         .myStyleStack(
@@ -39,10 +42,10 @@ final class MainCell: UICollectionViewCell {
             axis: .horizontal,
             distribution: .equalSpacing,
             userInteraction: false)
-        .setLayoutMargins(top: 0, left: 5, bottom: 5, right: 5)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupView()
         setViewHierarhies()
         setConstraints()
     }
@@ -82,9 +85,13 @@ final class MainCell: UICollectionViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            shoppingCartButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.3),
+            shoppingCartButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.25),
             shoppingCartButton.heightAnchor.constraint(equalTo: shoppingCartButton.widthAnchor),
         ])
+    }
+    
+    private func setupView() {
+        contentView.backgroundColor = .white
     }
     
     private func setupCornerRadiusCell() {
@@ -93,7 +100,7 @@ final class MainCell: UICollectionViewCell {
     }
     
     private func setupShadowCell() {
-        layer.shadowColor = #colorLiteral(red: 0.638755664, green: 0.638755664, blue: 0.638755664, alpha: 1)
+        layer.shadowColor = Colors.shadowColor
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowRadius = 2.5
         layer.shadowOpacity = 0.8
@@ -104,10 +111,8 @@ final class MainCell: UICollectionViewCell {
 extension MainCell: ConfigurableView {
     
     func configure(with model: ModelMainCell) {
-        contentView.backgroundColor = .white
-        
         productImage.image = model.image
-        priceLabel.text = "13,ddddddddhhhh45"
+        priceLabel.text = "13,45"
     }
     typealias Model = ModelMainCell
 }

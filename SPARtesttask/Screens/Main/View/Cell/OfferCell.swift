@@ -11,8 +11,13 @@ final class OfferCell: UICollectionViewCell {
     
     static let identifire = "OfferCell"
     
+    private let offerImage = UIImageView()
+        .setMyStyle()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setViewHierarhies()
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -21,12 +26,26 @@ final class OfferCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.layer.cornerRadius = ProjectDesign.cornerRadius
+        offerImage.layer.cornerRadius = ProjectDesign.cornerRadius
+    }
+    
+    private func setViewHierarhies() {
+        contentView.addSubview(offerImage)
+    }
+    
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            offerImage.topAnchor.constraint(equalTo: contentView.topAnchor),
+            offerImage.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            offerImage.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            offerImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
 }
 extension OfferCell: ConfigurableView {
+    
     func configure(with model: ModelOfferCell) {
-        contentView.backgroundColor = .yellow
+        offerImage.image = model.image
     }
     
     typealias Model = ModelOfferCell

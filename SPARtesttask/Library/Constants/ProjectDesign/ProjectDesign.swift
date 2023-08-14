@@ -10,4 +10,6 @@ import Foundation
 enum ProjectDesign {
     
     static let cornerRadius: CGFloat = 15
+    
+    static let indentProductCell: CGFloat = 5
 }

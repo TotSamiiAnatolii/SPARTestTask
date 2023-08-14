@@ -49,6 +49,11 @@
 		189374A92A88E61F0070B649 /* ShoppingCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189374A82A88E61F0070B649 /* ShoppingCartButton.swift */; };
 		189374AB2A88F3BC0070B649 /* UIStackView+MyStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189374AA2A88F3BC0070B649 /* UIStackView+MyStyle.swift */; };
 		189374AD2A88FBAB0070B649 /* HeaderForOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189374AC2A88FBAB0070B649 /* HeaderForOffer.swift */; };
+		189374B02A891D080070B649 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189374AF2A891D080070B649 /* Fonts.swift */; };
+		189374B32A891DB20070B649 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189374B22A891DB20070B649 /* Colors.swift */; };
+		189374B62A8938560070B649 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189374B52A8938560070B649 /* DataSource.swift */; };
+		189374B82A8944E30070B649 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189374B72A8944E30070B649 /* UIViewController+.swift */; };
+		189374BC2A894D150070B649 /* CitySelectionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189374BB2A894D150070B649 /* CitySelectionTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +120,11 @@
 		189374A82A88E61F0070B649 /* ShoppingCartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartButton.swift; sourceTree = "<group>"; };
 		189374AA2A88F3BC0070B649 /* UIStackView+MyStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+MyStyle.swift"; sourceTree = "<group>"; };
 		189374AC2A88FBAB0070B649 /* HeaderForOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForOffer.swift; sourceTree = "<group>"; };
+		189374AF2A891D080070B649 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		189374B22A891DB20070B649 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		189374B52A8938560070B649 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		189374B72A8944E30070B649 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		189374BB2A894D150070B649 /* CitySelectionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectionTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +181,7 @@
 				189374462A87DB7C0070B649 /* Screens */,
 				189374752A87E9FE0070B649 /* Library */,
 				189374522A87DFC20070B649 /* NetworkManager */,
+				189374B42A89382D0070B649 /* DataSource */,
 				1893741E2A87D9A70070B649 /* Assets.xcassets */,
 				189374202A87D9A70070B649 /* LaunchScreen.storyboard */,
 				189374232A87D9A70070B649 /* Info.plist */,
@@ -405,6 +416,8 @@
 		189374762A87EA0D0070B649 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				189374B12A891D840070B649 /* Colors */,
+				189374AE2A891CF50070B649 /* Fonts */,
 				189374A42A88DE1E0070B649 /* ProjectDesign */,
 				189374772A87EA240070B649 /* Images */,
 			);
@@ -453,6 +466,7 @@
 				1893748F2A87F4FD0070B649 /* UILabel+MyStyle.swift */,
 				189374A22A88D5970070B649 /* UIImageView+MyStyle.swift */,
 				189374AA2A88F3BC0070B649 /* UIStackView+MyStyle.swift */,
+				189374B72A8944E30070B649 /* UIViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -478,8 +492,33 @@
 			isa = PBXGroup;
 			children = (
 				189374A82A88E61F0070B649 /* ShoppingCartButton.swift */,
+				189374BB2A894D150070B649 /* CitySelectionTextField.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		189374AE2A891CF50070B649 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				189374AF2A891D080070B649 /* Fonts.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		189374B12A891D840070B649 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				189374B22A891DB20070B649 /* Colors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		189374B42A89382D0070B649 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				189374B52A8938560070B649 /* DataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -625,6 +664,7 @@
 				189374652A87E2050070B649 /* MainPresenter.swift in Sources */,
 				189374812A87F0140070B649 /* BannerCell.swift in Sources */,
 				1893746C2A87E57E0070B649 /* ListViewController.swift in Sources */,
+				189374BC2A894D150070B649 /* CitySelectionTextField.swift in Sources */,
 				189374A62A88DE490070B649 /* ProjectDesign.swift in Sources */,
 				189374892A87F39F0070B649 /* ConfigurableView.swift in Sources */,
 				189374572A87E08B0070B649 /* NetworkManager.swift in Sources */,
@@ -646,8 +686,12 @@
 				189374792A87EA350070B649 /* Images.swift in Sources */,
 				189374182A87D9A40070B649 /* SceneDelegate.swift in Sources */,
 				189374A32A88D5970070B649 /* UIImageView+MyStyle.swift in Sources */,
+				189374B32A891DB20070B649 /* Colors.swift in Sources */,
 				189374902A87F4FD0070B649 /* UILabel+MyStyle.swift in Sources */,
 				189374672A87E2A90070B649 /* MainViewModel.swift in Sources */,
+				189374B02A891D080070B649 /* Fonts.swift in Sources */,
+				189374B62A8938560070B649 /* DataSource.swift in Sources */,
+				189374B82A8944E30070B649 /* UIViewController+.swift in Sources */,
 				1893749C2A87FC340070B649 /* MainuViewState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

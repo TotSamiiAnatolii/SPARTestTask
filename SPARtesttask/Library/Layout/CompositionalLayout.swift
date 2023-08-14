@@ -21,7 +21,7 @@ final class CompositionalLayout {
         
         section.orthogonalScrollingBehavior = .continuous
         
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 15)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 15)
         
         return section
     }
@@ -49,7 +49,7 @@ final class CompositionalLayout {
         
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 10)
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.3), heightDimension: .absolute(120)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.3), heightDimension: .absolute(140)), subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         
@@ -75,7 +75,7 @@ final class CompositionalLayout {
         
         section.orthogonalScrollingBehavior = .continuous
         
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         section.boundarySupplementaryItems = [
             .init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40)), elementKind:  UICollectionView.elementKindSectionHeader, alignment: .topLeading)

@@ -16,14 +16,13 @@ final class StoriesCell: UICollectionViewCell {
        
     private let storiesImage = UIImageView()
         .setMyStyle()
-        .setImage(image: UIImage(named: "placeholder"))
     
     private let nameStories = UILabel()
         .setMyStyle(
             numberOfLines: 2,
             textAlignment: .center,
-            font: UIFont.systemFont(ofSize: 12))
-        .setTextColor(color: UIColor.black)
+            font: Fonts.stories)
+        .setTextColor(color: Colors.fontStories)
     
     //MARK: Lifecycle
     override init(frame: CGRect) {
@@ -53,6 +52,7 @@ final class StoriesCell: UICollectionViewCell {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         circleView.layer.cornerRadius = circleView.frame.height / 2
+        storiesImage.layer.cornerRadius = storiesImage.frame.height / 2
     }
     
     //MARK: View hierarhies
@@ -67,8 +67,8 @@ final class StoriesCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             nameStories.topAnchor.constraint(equalTo: circleView.bottomAnchor, constant: 8),
             nameStories.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            nameStories.leadingAnchor.constraint(equalTo: circleView.leadingAnchor),
-            nameStories.trailingAnchor.constraint(equalTo: circleView.trailingAnchor)
+            nameStories.leadingAnchor.constraint(equalTo: circleView.leadingAnchor, constant: 5),
+            nameStories.trailingAnchor.constraint(equalTo: circleView.trailingAnchor, constant: -5)
         ])
         
         NSLayoutConstraint.activate([
@@ -81,7 +81,7 @@ final class StoriesCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             storiesImage.centerXAnchor.constraint(equalTo: circleView.centerXAnchor),
             storiesImage.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
-            storiesImage.widthAnchor.constraint(equalTo: circleView.widthAnchor, multiplier: 0.85),
+            storiesImage.widthAnchor.constraint(equalTo: circleView.widthAnchor, multiplier: 0.9),
             storiesImage.heightAnchor.constraint(equalTo: storiesImage.widthAnchor)
         ])
     }
@@ -90,7 +90,8 @@ extension StoriesCell: ConfigurableView {
     func configure(with model: ModelStoriesCell) {
         circleView.layer.borderWidth = 1
         circleView.layer.borderColor = UIColor.green.cgColor
-        nameStories.text = "Stroies"
+        nameStories.text = model.title
+        storiesImage.image = model.image
     }
     
     typealias Model = ModelStoriesCell

@@ -54,7 +54,7 @@ final class HeaderForProducts: UICollectionReusableView {
 }
 extension HeaderForProducts: ConfigurableView {
     func configure(with model: ModelHeaderView) {
-        nameCollection.text = "Рекомендуем"
+        nameCollection.text = model.title
     }
  
     typealias Model = ModelHeaderView
