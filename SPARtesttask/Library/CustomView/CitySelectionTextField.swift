@@ -34,8 +34,9 @@ final class CitySelectionTextField: UITextField {
         self.layer.cornerRadius = 15
         self.layer.masksToBounds = true
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.borderColor = Colors.borderColorCitySelection
         self.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        self.textColor = Colors.fontStories
         self.setLeftViewMode1(viewMode: .always, image: leftImage)
     }
 

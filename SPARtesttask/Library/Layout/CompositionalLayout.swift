@@ -69,7 +69,7 @@ final class CompositionalLayout {
         
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 14)
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.34), heightDimension: .absolute(160)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.36), heightDimension: .absolute(170)), subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         

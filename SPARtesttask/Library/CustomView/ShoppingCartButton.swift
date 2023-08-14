@@ -48,7 +48,7 @@ final class ShoppingCartButton: UIButton {
     }
     
     private func setupView() {
-        backgroundColor = .green
+        backgroundColor = Colors.shoppingCart
         translatesAutoresizingMaskIntoConstraints = false
     }
     

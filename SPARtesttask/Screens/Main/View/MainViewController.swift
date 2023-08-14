@@ -30,7 +30,7 @@ final class MainViewController: UIViewController {
     
     private var dataSource: UICollectionViewDiffableDataSource<SectionType, AnyHashable>?
     
-    private var presenter: MainPresenterProtocol
+    private let presenter: MainPresenterProtocol
     
     private let myDataSource = DataSource()
 
@@ -76,10 +76,10 @@ final class MainViewController: UIViewController {
         guard let navigationController else {
             return
         }
-        let heightNavBar = navigationController.navigationBar.bounds.height
+        let heightNavBar = navigationController.navigationBar.bounds.height * 0.85
         let widthNavBar = navigationController.navigationBar.bounds.width
         
-        let searchBar = CitySelectionTextField(image: Images.geoTag, frame: CGRect(x: 0, y: 0, width: widthNavBar, height: heightNavBar - 5))
+        let searchBar = CitySelectionTextField(image: Images.geoTag, frame: CGRect(x: 0, y: 0, width: widthNavBar, height: heightNavBar))
         searchBar.text = "Москва, Москва и Московская область"
 
         let menuButton = UIBarButtonItem(image: Images.listButton, landscapeImagePhone: nil, style: .done, target: self, action: nil)

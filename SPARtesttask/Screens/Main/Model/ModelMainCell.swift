@@ -12,4 +12,6 @@ import UIKit
      let id: String
      
      let image: UIImage
+     
+     let promotion: Bool 
 }

@@ -16,10 +16,12 @@ final class MainCell: UICollectionViewCell {
     
     private let shoppingCartButton = ShoppingCartButton()
     
+    private let promotionView = PromotionView(color: Colors.promotionView)
+    
     private let priceLabel = UILabel()
         .setMyStyle(
             numberOfLines: 1,
-            textAlignment: .center,
+            textAlignment: .left,
             font: Fonts.priceProductCell)
         .setTextColor(color: Colors.priceProductCell)
     
@@ -59,12 +61,7 @@ final class MainCell: UICollectionViewCell {
         setupShadowCell()
         setupCornerRadiusCell()
     }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        
-    }
-    
+  
     private func setViewHierarhies() {
         contentView.addSubview(mainStack)
         contentView.addSubview(shoppingCartButton)
@@ -73,6 +70,7 @@ final class MainCell: UICollectionViewCell {
         priceStack.addArrangedSubview(shoppingCartButton)
         mainStack.addArrangedSubview(productImage)
         mainStack.addArrangedSubview(priceStack)
+        contentView.addSubview(promotionView)
     }
     
     private func setConstraints() {
@@ -85,8 +83,15 @@ final class MainCell: UICollectionViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            shoppingCartButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.25),
+            shoppingCartButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.27),
             shoppingCartButton.heightAnchor.constraint(equalTo: shoppingCartButton.widthAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
+            promotionView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            promotionView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            promotionView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.12),
+            promotionView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.6)
         ])
     }
     
@@ -96,7 +101,7 @@ final class MainCell: UICollectionViewCell {
     
     private func setupCornerRadiusCell() {
         contentView.layer.cornerRadius = ProjectDesign.cornerRadius
-        contentView.clipsToBounds = false
+        contentView.clipsToBounds = true
     }
     
     private func setupShadowCell() {
@@ -113,6 +118,8 @@ extension MainCell: ConfigurableView {
     func configure(with model: ModelMainCell) {
         productImage.image = model.image
         priceLabel.text = "13,45"
+        promotionView.appearanceСontrol(state: model.promotion)
     }
+    
     typealias Model = ModelMainCell
 }

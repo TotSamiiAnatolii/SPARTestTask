@@ -34,16 +34,16 @@ final class DataSource {
         ModelOfferCell(id: "15", image: Images.of5)]
     
     private var mainList: [ModelMainCell] = [
-        ModelMainCell(id: "16", image: Images.pr1),
-        ModelMainCell(id: "17", image: Images.pr2),
-        ModelMainCell(id: "18", image: Images.pr3),
-        ModelMainCell(id: "19", image: Images.pr4),
-        ModelMainCell(id: "20", image: Images.pr5)]
+        ModelMainCell(id: "16", image: Images.pr1, promotion: false),
+        ModelMainCell(id: "17", image: Images.pr2, promotion: true),
+        ModelMainCell(id: "18", image: Images.pr3, promotion: true),
+        ModelMainCell(id: "19", image: Images.pr4, promotion: false),
+        ModelMainCell(id: "20", image: Images.pr5, promotion: false)]
     
     private var sweetMoodList: [ModelMainCell] = [
-        ModelMainCell(id: "21", image: Images.sm1),
-        ModelMainCell(id: "22", image: Images.sm2),
-        ModelMainCell(id: "23", image: Images.sm3),
-        ModelMainCell(id: "24", image: Images.sm4),
-        ModelMainCell(id: "25", image: Images.sm5)]
+        ModelMainCell(id: "21", image: Images.sm1, promotion: false),
+        ModelMainCell(id: "22", image: Images.sm2, promotion: false),
+        ModelMainCell(id: "23", image: Images.sm3, promotion: true),
+        ModelMainCell(id: "24", image: Images.sm4, promotion: false),
+        ModelMainCell(id: "25", image: Images.sm5, promotion: false)]
 }

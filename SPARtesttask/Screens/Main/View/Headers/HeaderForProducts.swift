@@ -21,7 +21,7 @@ final class HeaderForProducts: UICollectionReusableView {
         .setMyStyle(
             numberOfLines: 1,
             textAlignment: .left,
-            font: UIFont.boldSystemFont(ofSize: 18))
+            font: Fonts.header)
         .setTextColor(color: .black)
     
     override init(frame: CGRect) {

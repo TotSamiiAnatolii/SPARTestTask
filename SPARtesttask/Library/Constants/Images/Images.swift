@@ -17,7 +17,7 @@ enum Images {
     
     static let shoppingCartTab: UIImage = UIImage(named: "Корзина")!
     
-    static let shoppingCart: UIImage = UIImage(named: "shopping-cart")!
+    static let shoppingCart: UIImage = UIImage(named: "shopping-cart (1)")!.withTintColor(.white)
     
     static let shoppingCart1: UIImage = UIImage(named: "shopping-cart")!.withTintColor(.blue)
     

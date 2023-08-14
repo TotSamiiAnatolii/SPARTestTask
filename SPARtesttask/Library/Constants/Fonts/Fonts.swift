@@ -9,7 +9,9 @@ import UIKit
 
 enum Fonts {
     
-    static let stories = UIFont.boldSystemFont(ofSize: 11)
+    static let stories = UIFont.systemFont(ofSize: 11, weight: .semibold)
     
     static let priceProductCell = UIFont.boldSystemFont(ofSize: 15)
+    
+    static let header = UIFont.systemFont(ofSize: 18, weight: .semibold)
 }

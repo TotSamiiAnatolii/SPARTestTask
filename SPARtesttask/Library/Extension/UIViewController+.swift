@@ -11,7 +11,6 @@ extension UIViewController {
     
     func setupNavBar(leftItem: UIBarButtonItem?, rightItem: UIBarButtonItem?, titleView: UIView?) {
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
         appearance.backgroundColor = .white
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
@@ -20,6 +19,6 @@ extension UIViewController {
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem
         navigationItem.titleView = titleView
-        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.286167413, green: 0.3597429991, blue: 0.6686067581, alpha: 1)
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
     }
 }
