@@ -32,14 +32,36 @@ extension UILabel {
         return self
     }
     
- 
-    public func setStrikethroughStyle() {
-        if let textString = self.text {
-            let attributedString = NSMutableAttributedString(string: textString)
+    public func resizePrice(price: String) {
+        let currentDecimal = Character(",")
+        let amountText = NSMutableAttributedString.init(string: price)
+        
+        guard let startIndex = price.indexCharacter(of: currentDecimal) else {
+            self.text = price
+            return
+        }
+        
+        let endIndex = amountText.length - startIndex
+        
+        amountText.setAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .semibold),
+                                  NSAttributedString.Key.foregroundColor: Colors.priceProductCell],
+                                 range: NSRange(location: startIndex, length: endIndex))
+        self.attributedText = amountText
+    }
+    
+    public func setStrikethroughStyle(price: String?) {
+        
+        guard let price = price else {
+            self.text = nil
+            return
+        }
+      
+            let attributedString = NSMutableAttributedString(string: price)
             attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle,
                                           value: NSUnderlineStyle.single.rawValue,
                                           range: NSRange(location: 0, length: attributedString.length))
             attributedText = attributedString
-        }
+        
     }
+
 }

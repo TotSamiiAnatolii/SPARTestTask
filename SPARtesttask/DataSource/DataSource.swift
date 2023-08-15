@@ -34,16 +34,16 @@ final class DataSource {
         ModelOfferCell(id: "15", image: Images.of5)]
     
     private var mainList: [ModelMainCell] = [
-        ModelMainCell(id: "16", image: Images.pr1, promotion: false, price: "102,34"),
-        ModelMainCell(id: "17", image: Images.pr2, promotion: true, price: "45,34"),
-        ModelMainCell(id: "18", image: Images.pr3, promotion: true, price: "213,12"),
-        ModelMainCell(id: "19", image: Images.pr4, promotion: false, price: "100,02"),
-        ModelMainCell(id: "20", image: Images.pr5, promotion: false, price: "99,99")]
+        ModelMainCell(id: "16", image: Images.pr1, promotion: false, currentPrice: "102,34", lastPrice: "122.48"),
+        ModelMainCell(id: "17", image: Images.pr2, promotion: true, currentPrice: "45,34", lastPrice: nil),
+        ModelMainCell(id: "18", image: Images.pr3, promotion: true, currentPrice: "213,12", lastPrice: nil),
+        ModelMainCell(id: "19", image: Images.pr4, promotion: false, currentPrice: "100,02", lastPrice: "150.87"),
+        ModelMainCell(id: "20", image: Images.pr5, promotion: false, currentPrice: "99,99", lastPrice: "134,99")]
     
     private var sweetMoodList: [ModelMainCell] = [
-        ModelMainCell(id: "21", image: Images.sm1, promotion: false, price: "311,32"),
-        ModelMainCell(id: "22", image: Images.sm2, promotion: false, price: "23,50"),
-        ModelMainCell(id: "23", image: Images.sm3, promotion: true, price: "56,85"),
-        ModelMainCell(id: "24", image: Images.sm4, promotion: false, price: "119,75"),
-        ModelMainCell(id: "25", image: Images.sm5, promotion: false, price: "32,12")]
+        ModelMainCell(id: "21", image: Images.sm1, promotion: true, currentPrice: "311,32", lastPrice: nil),
+        ModelMainCell(id: "22", image: Images.sm4, promotion: false, currentPrice: "23,50", lastPrice: "45,11"),
+        ModelMainCell(id: "23", image: Images.sm3, promotion: true, currentPrice: "56,85", lastPrice: nil),
+        ModelMainCell(id: "24", image: Images.sm2, promotion: false, currentPrice: "119,75", lastPrice: "156,20"),
+        ModelMainCell(id: "25", image: Images.sm5, promotion: false, currentPrice: "32,12", lastPrice: "66.56")]
 }

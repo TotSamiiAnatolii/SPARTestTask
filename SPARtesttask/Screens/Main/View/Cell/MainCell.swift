@@ -18,12 +18,23 @@ final class MainCell: UICollectionViewCell {
     
     private let promotionView = PromotionView(color: Colors.promotionView)
     
-    private let priceLabel = UILabel()
+    private let currentPriceLabel = UILabel()
         .setMyStyle(
             numberOfLines: 1,
             textAlignment: .left,
             font: Fonts.priceProductCell)
         .setTextColor(color: Colors.priceProductCell)
+    
+    private let lastPriceLabel = UILabel()
+        .setMyStyle(
+            numberOfLines: 1,
+            textAlignment: .left,
+            font: Fonts.lastPriceCell)
+        .setTextColor(color: Colors.lastPrice)
+    
+    private let designationImageView = UIImageView()
+        .setMyStyle()
+        .setImage(image: Images.weight)
     
     private let mainStack = UIStackView()
         .myStyleStack(
@@ -39,8 +50,28 @@ final class MainCell: UICollectionViewCell {
     
     private let priceStack = UIStackView()
         .myStyleStack(
-            spacing: 5,
+            spacing: 3,
             alignment: .fill ,
+            axis: .vertical,
+            distribution: .equalSpacing,
+            userInteraction: false)
+        .setLayoutMargins(top: .zero,
+                          left: 2,
+                          bottom: .zero,
+                          right: .zero)
+    
+    private let currentPriceStack = UIStackView()
+        .myStyleStack(
+            spacing: 3,
+            alignment: .top ,
+            axis: .horizontal,
+            distribution: .equalSpacing,
+            userInteraction: false)
+    
+    private let priceShpppingCartStack = UIStackView()
+        .myStyleStack(
+            spacing: 5,
+            alignment: .center ,
             axis: .horizontal,
             distribution: .equalSpacing,
             userInteraction: false)
@@ -64,12 +95,15 @@ final class MainCell: UICollectionViewCell {
   
     private func setViewHierarhies() {
         contentView.addSubview(mainStack)
-        contentView.addSubview(shoppingCartButton)
-        contentView.addSubview(priceStack)
-        priceStack.addArrangedSubview(priceLabel)
-        priceStack.addArrangedSubview(shoppingCartButton)
+
+        currentPriceStack.addArrangedSubview(currentPriceLabel)
+        currentPriceStack.addArrangedSubview(designationImageView)
+        priceStack.addArrangedSubview(currentPriceStack)
+        priceStack.addArrangedSubview(lastPriceLabel)
+        priceShpppingCartStack.addArrangedSubview(priceStack)
+        priceShpppingCartStack.addArrangedSubview(shoppingCartButton)
         mainStack.addArrangedSubview(productImage)
-        mainStack.addArrangedSubview(priceStack)
+        mainStack.addArrangedSubview(priceShpppingCartStack)
         contentView.addSubview(promotionView)
     }
     
@@ -92,6 +126,11 @@ final class MainCell: UICollectionViewCell {
             promotionView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             promotionView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.12),
             promotionView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.6)
+        ])
+        
+        NSLayoutConstraint.activate([
+            designationImageView.widthAnchor.constraint(equalToConstant: 16),
+            designationImageView.heightAnchor.constraint(equalToConstant: 16)
         ])
     }
     
@@ -117,7 +156,8 @@ extension MainCell: ConfigurableView {
     
     func configure(with model: ModelMainCell) {
         productImage.image = model.image
-        priceLabel.resizePrice(price: model.price)
+        currentPriceLabel.resizePrice(price: model.currentPrice)
+        lastPriceLabel.setStrikethroughStyle(price: model.lastPrice)
         promotionView.appearanceСontrol(state: model.promotion)
     }
     

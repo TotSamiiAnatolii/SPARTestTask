@@ -12,8 +12,4 @@ extension String {
     public func indexCharacter(of char: Character) -> Int? {
         return firstIndex(of: char)?.utf16Offset(in: self)
     }
-    
-    public func fetchString() -> String {
-        return  self.components(separatedBy: ".").last!.trimmingCharacters(in: .whitespaces)
-    }
 }

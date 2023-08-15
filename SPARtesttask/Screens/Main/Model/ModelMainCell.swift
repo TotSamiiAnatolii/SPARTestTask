@@ -15,5 +15,7 @@ import UIKit
      
      let promotion: Bool
      
-     let price: String
+     let currentPrice: String
+     
+     let lastPrice: String?
 }
