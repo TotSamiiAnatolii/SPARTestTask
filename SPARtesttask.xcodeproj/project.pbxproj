@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18825DBE2A8BDB81006DC62C /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18825DBD2A8BDB81006DC62C /* UILabel+.swift */; };
 		188C081C2A8AA2D100A34959 /* PromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C081B2A8AA2D100A34959 /* PromotionView.swift */; };
+		188C081E2A8AB05600A34959 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C081D2A8AB05600A34959 /* String+.swift */; };
 		189374162A87D9A40070B649 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189374152A87D9A40070B649 /* AppDelegate.swift */; };
 		189374182A87D9A40070B649 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189374172A87D9A40070B649 /* SceneDelegate.swift */; };
 		1893741A2A87D9A40070B649 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189374192A87D9A40070B649 /* MainViewController.swift */; };
@@ -75,7 +77,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18825DBD2A8BDB81006DC62C /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		188C081B2A8AA2D100A34959 /* PromotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionView.swift; sourceTree = "<group>"; };
+		188C081D2A8AB05600A34959 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		189374122A87D9A40070B649 /* SPARtesttask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPARtesttask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		189374152A87D9A40070B649 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		189374172A87D9A40070B649 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -469,6 +473,8 @@
 				189374A22A88D5970070B649 /* UIImageView+MyStyle.swift */,
 				189374AA2A88F3BC0070B649 /* UIStackView+MyStyle.swift */,
 				189374B72A8944E30070B649 /* UIViewController+.swift */,
+				188C081D2A8AB05600A34959 /* String+.swift */,
+				18825DBD2A8BDB81006DC62C /* UILabel+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -681,6 +687,7 @@
 				1893746E2A87E5C70070B649 /* ShoppingCartPresenter.swift in Sources */,
 				189374A92A88E61F0070B649 /* ShoppingCartButton.swift in Sources */,
 				1893749A2A87F97F0070B649 /* OfferCell.swift in Sources */,
+				18825DBE2A8BDB81006DC62C /* UILabel+.swift in Sources */,
 				189374722A87E6600070B649 /* ProfilePresenter.swift in Sources */,
 				1893747C2A87EADD0070B649 /* MainView.swift in Sources */,
 				189374862A87F1E20070B649 /* CompositionalLayout.swift in Sources */,
@@ -688,6 +695,7 @@
 				189374512A87DF910070B649 /* ModuleBuilder.swift in Sources */,
 				189374742A87E6990070B649 /* ProfileViewController.swift in Sources */,
 				189374792A87EA350070B649 /* Images.swift in Sources */,
+				188C081E2A8AB05600A34959 /* String+.swift in Sources */,
 				189374182A87D9A40070B649 /* SceneDelegate.swift in Sources */,
 				189374A32A88D5970070B649 /* UIImageView+MyStyle.swift in Sources */,
 				189374B32A891DB20070B649 /* Colors.swift in Sources */,

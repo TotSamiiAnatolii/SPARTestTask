@@ -11,7 +11,7 @@ enum Fonts {
     
     static let stories = UIFont.systemFont(ofSize: 11, weight: .semibold)
     
-    static let priceProductCell = UIFont.boldSystemFont(ofSize: 15)
+    static let priceProductCell = UIFont.systemFont(ofSize: 15, weight: .bold)
     
     static let header = UIFont.systemFont(ofSize: 18, weight: .semibold)
 }

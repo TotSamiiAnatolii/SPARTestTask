@@ -13,5 +13,7 @@ import UIKit
      
      let image: UIImage
      
-     let promotion: Bool 
+     let promotion: Bool
+     
+     let price: String
 }

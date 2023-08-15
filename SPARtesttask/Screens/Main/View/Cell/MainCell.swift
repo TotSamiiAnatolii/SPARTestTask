@@ -117,7 +117,7 @@ extension MainCell: ConfigurableView {
     
     func configure(with model: ModelMainCell) {
         productImage.image = model.image
-        priceLabel.text = "13,45"
+        priceLabel.resizePrice(price: model.price)
         promotionView.appearanceСontrol(state: model.promotion)
     }
     
