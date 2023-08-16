@@ -25,3 +25,7 @@ enum SectionType: Int {
         }
     }
 }
+
+struct ModelMainView {
+    
+}

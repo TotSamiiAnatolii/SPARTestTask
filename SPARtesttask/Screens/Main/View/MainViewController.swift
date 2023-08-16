@@ -26,6 +26,7 @@ final class MainViewController: UIViewController {
         return view
     }
     
+    //MARK: - Properties
     private let compositionalLayout = CompositionalLayout()
     
     private var dataSource: UICollectionViewDiffableDataSource<SectionType, AnyHashable>?
@@ -33,7 +34,7 @@ final class MainViewController: UIViewController {
     private let presenter: MainPresenterProtocol
     
     private let myDataSource = DataSource()
-    
+        
     //MARK: - Init
     init(presenter: MainPresenter) {
         self.presenter = presenter
@@ -44,6 +45,7 @@ final class MainViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Life cycle
     override func loadView() {
         super.loadView()
         self.view = MainView(frame: UIScreen.main.bounds)
@@ -59,8 +61,10 @@ final class MainViewController: UIViewController {
                    offers: myDataSource.offersList,
                    main: myDataSource.categories[SectionType.main.nameTitle]!,
                    sweetMood: myDataSource.categories[SectionType.sweetMood.nameTitle]!)
+        configureView() 
     }
     
+    //MARK: - Configure view components
     private func configureCollectionView() {
         mainView.collectionView.collectionViewLayout = createCompositionalLayout()
         mainView.collectionView.register(StoriesCell.self, forCellWithReuseIdentifier: StoriesCell.identifire)
@@ -78,15 +82,18 @@ final class MainViewController: UIViewController {
         }
         let heightNavBar = navigationController.navigationBar.bounds.height * 0.85
         let widthNavBar = navigationController.navigationBar.bounds.width
-        
-        let searchBar = CitySelectionTextField(image: Images.geoTag, frame: CGRect(x: 0, y: 0, width: widthNavBar, height: heightNavBar))
-        searchBar.text = "Москва, Москва и Московская область"
-        
+ 
+        mainView.searchBar.frame = CGRect(x: 0, y: 0, width: widthNavBar, height: heightNavBar)
         let menuButton = UIBarButtonItem(image: Images.listButton, landscapeImagePhone: nil, style: .done, target: self, action: nil)
-        
-        self.setupNavBar(leftItem: nil, rightItem: menuButton, titleView: searchBar)
+        self.setupNavBar(leftItem: nil, rightItem: menuButton, titleView: mainView.searchBar)
     }
     
+    private func configureView() {
+        let testLocation = "Москва, Москва и Московская область"
+        mainView.searchBar.text = testLocation
+    }
+    
+    //MARK: Data source
     private func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<SectionType, AnyHashable>(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             
@@ -188,6 +195,7 @@ final class MainViewController: UIViewController {
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
+    //MARK: - Compositional layout
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             let section = SectionType(rawValue: sectionIndex)
@@ -205,7 +213,6 @@ final class MainViewController: UIViewController {
                 return self.compositionalLayout.setProductFlowLayout()
             case .none:
                 return nil
-                
             }
         }
         return layout

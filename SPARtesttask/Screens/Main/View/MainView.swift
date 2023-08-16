@@ -9,8 +9,12 @@ import UIKit
 
 final class MainView: UIView {
             
+    //MARK: - Properties
     public var collectionView: UICollectionView!
+    
+    public let searchBar = CitySelectionTextField(image: Images.geoTag, frame: .zero)
 
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -23,6 +27,7 @@ final class MainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //MARK: - Setup collectionView
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -44,4 +49,12 @@ final class MainView: UIView {
             collectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+}
+extension MainView: ConfigurableView {
+    
+    func configure(with model: ModelMainView) {
+
+    }
+    
+    typealias Model = ModelMainView
 }

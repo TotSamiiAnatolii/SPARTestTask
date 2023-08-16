@@ -18,29 +18,29 @@ final class CitySelectionTextField: UITextField {
         super.init(frame: frame)
         configureView()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-           var textRect = super.leftViewRect(forBounds: bounds)
-           textRect.origin.x += leftPadding
-           return textRect
-       }
+        var textRect = super.leftViewRect(forBounds: bounds)
+        textRect.origin.x += leftPadding
+        return textRect
+    }
     
     private func configureView() {
-        self.placeholder = "Ваш город?"
-        self.layer.cornerRadius = 15
-        self.layer.masksToBounds = true
-        self.layer.borderWidth = 1
-        self.layer.borderColor = Colors.borderColorCitySelection
-        self.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        self.textColor = Colors.fontStories
-        self.setLeftViewMode1(viewMode: .always, image: leftImage)
+        placeholder = "Ваш город?"
+        layer.cornerRadius = 15
+        layer.masksToBounds = true
+        layer.borderWidth = 0.8
+        layer.borderColor = Colors.borderColorCitySelection
+        font = Fonts.citySelect
+        textColor = Colors.fontStories
+        setLeftViewMode1(viewMode: .always, image: leftImage)
     }
-
-     func setLeftViewMode1(viewMode: UITextField.ViewMode, image: UIImage) {
+    
+    private func setLeftViewMode1(viewMode: UITextField.ViewMode, image: UIImage) {
         let viewContainer = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
         imageView.contentMode = .scaleAspectFill
@@ -50,5 +50,4 @@ final class CitySelectionTextField: UITextField {
         self.leftViewMode = viewMode
         self.leftView = viewContainer
     }
-    
 }
