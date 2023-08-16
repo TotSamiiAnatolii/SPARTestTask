@@ -9,11 +9,13 @@ import UIKit
 
 final class OfferCell: UICollectionViewCell {
     
+    //MARK: - Properties
     static let identifire = "OfferCell"
     
     private let offerImage = UIImageView()
         .setMyStyle()
     
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setViewHierarhies()
@@ -22,6 +24,11 @@ final class OfferCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        offerImage.image = nil
     }
     
     override func layoutSubviews() {

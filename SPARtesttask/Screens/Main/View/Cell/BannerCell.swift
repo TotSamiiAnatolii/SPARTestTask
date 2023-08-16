@@ -9,11 +9,13 @@ import UIKit
 
 final class BannerCell: UICollectionViewCell {
     
+    //MARK: - Properties
     static let identifire = "BannerCell"
     
     private let promotionImage = UIImageView()
         .setMyStyle()
     
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setViewHierarhies()
@@ -24,6 +26,11 @@ final class BannerCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        promotionImage.image = nil
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         promotionImage.layer.cornerRadius = ProjectDesign.cornerRadius

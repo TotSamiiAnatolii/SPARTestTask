@@ -9,6 +9,7 @@ import UIKit
 
 final class StoriesCell: UICollectionViewCell {
     
+    //MARK: - Properties
     static let identifire = "StoriesCell"
     
     private let circleView = UIView()
@@ -24,7 +25,7 @@ final class StoriesCell: UICollectionViewCell {
             font: Fonts.stories)
         .setTextColor(color: Colors.fontStories)
     
-    //MARK: Lifecycle
+    //MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -35,18 +36,11 @@ final class StoriesCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-//        print(circleView.frame.height)
-//        circleView.layer.cornerRadius = 35.5
-//        circleView.clipsToBounds = true
-    }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-//        nameCategory.text = nil
-//        imageCategory.image = nil
+        nameStories.text = nil
+        storiesImage.image = nil
     }
     
     override func draw(_ rect: CGRect) {

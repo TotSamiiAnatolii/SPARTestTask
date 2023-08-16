@@ -8,7 +8,8 @@
 import UIKit
 
 final class HeaderForProducts: UICollectionReusableView {
-
+    
+    //MARK: - Properties
     static let identifire = "Header"
     
     private let leftIndent: CGFloat = 10
@@ -24,6 +25,7 @@ final class HeaderForProducts: UICollectionReusableView {
             font: Fonts.header)
         .setTextColor(color: .black)
     
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
@@ -33,11 +35,6 @@ final class HeaderForProducts: UICollectionReusableView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
     }
     
     private func setViewHierarhies() {
@@ -56,7 +53,7 @@ extension HeaderForProducts: ConfigurableView {
     func configure(with model: ModelHeaderView) {
         nameCollection.text = model.title
     }
- 
+    
     typealias Model = ModelHeaderView
 }
 

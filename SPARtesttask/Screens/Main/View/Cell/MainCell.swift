@@ -9,14 +9,17 @@ import UIKit
 
 final class MainCell: UICollectionViewCell {
     
+    //MARK: - Properties
     static let identifire = "MainCell"
-        
+    
     private let productImage = UIImageView()
         .setMyStyle()
     
     private let shoppingCartButton = ShoppingCartButton()
     
     private let promotionView = PromotionView(color: Colors.promotionView)
+    
+    private let sizeDesignation: (height: CGFloat, wieght: CGFloat) = (16, 16)
     
     private let currentPriceLabel = UILabel()
         .setMyStyle(
@@ -42,7 +45,7 @@ final class MainCell: UICollectionViewCell {
             alignment: .fill ,
             axis: .vertical,
             distribution: .equalSpacing,
-            userInteraction: false)
+            userInteraction: true)
         .setLayoutMargins(top: ProjectDesign.indentProductCell,
                           left: ProjectDesign.indentProductCell,
                           bottom: ProjectDesign.indentProductCell,
@@ -74,8 +77,9 @@ final class MainCell: UICollectionViewCell {
             alignment: .center ,
             axis: .horizontal,
             distribution: .equalSpacing,
-            userInteraction: false)
+            userInteraction: true)
     
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -92,10 +96,9 @@ final class MainCell: UICollectionViewCell {
         setupShadowCell()
         setupCornerRadiusCell()
     }
-  
+    
     private func setViewHierarhies() {
         contentView.addSubview(mainStack)
-
         currentPriceStack.addArrangedSubview(currentPriceLabel)
         currentPriceStack.addArrangedSubview(designationImageView)
         priceStack.addArrangedSubview(currentPriceStack)
@@ -108,7 +111,7 @@ final class MainCell: UICollectionViewCell {
     }
     
     private func setConstraints() {
-
+        
         NSLayoutConstraint.activate([
             mainStack.topAnchor.constraint(equalTo: contentView.topAnchor),
             mainStack.leftAnchor.constraint(equalTo: contentView.leftAnchor),
@@ -129,8 +132,8 @@ final class MainCell: UICollectionViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            designationImageView.widthAnchor.constraint(equalToConstant: 16),
-            designationImageView.heightAnchor.constraint(equalToConstant: 16)
+            designationImageView.widthAnchor.constraint(equalToConstant: sizeDesignation.wieght),
+            designationImageView.heightAnchor.constraint(equalToConstant: sizeDesignation.height)
         ])
     }
     

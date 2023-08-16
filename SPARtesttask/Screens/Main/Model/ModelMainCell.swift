@@ -7,15 +7,15 @@
 
 import UIKit
 
- struct ModelMainCell: Hashable {
-  
-     let id: String
-     
-     let image: UIImage
-     
-     let promotion: Bool
-     
-     let currentPrice: String
-     
-     let lastPrice: String?
+struct ModelMainCell: Hashable {
+    
+    let id: String
+    
+    let image: UIImage
+    
+    let promotion: Bool
+    
+    let currentPrice: String
+    
+    let lastPrice: String?
 }

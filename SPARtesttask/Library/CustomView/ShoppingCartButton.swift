@@ -9,10 +9,12 @@ import UIKit
 
 final class ShoppingCartButton: UIButton {
     
+    //MARK: - Properties
     private let shoppingCartImage = UIImageView()
         .setMyStyle()
         .setImage(image: Images.shoppingCart)
     
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -31,19 +33,7 @@ final class ShoppingCartButton: UIButton {
     
     override var isHighlighted: Bool {
         didSet {
-            tintColor = isHighlighted ? .orange.withAlphaComponent(0.5) : .orange
-        }
-    }
-    
-    override var isSelected: Bool {
-        didSet {
-            
-            switch isSelected {
-            case true:
-                self.setImage(Images.shoppingCart1, for: .normal)
-            case false:
-                self.setImage(Images.shoppingCart, for: .normal)
-            }
+             isHighlighted ? touchDown() : touchUp()
         }
     }
     
@@ -63,5 +53,28 @@ final class ShoppingCartButton: UIButton {
             shoppingCartImage.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
             shoppingCartImage.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5)
         ])
+    }
+    
+    private func touchDown() {
+        let scaleX = 0.98
+        let scaleY = 0.98
+    
+        self.shoppingCartImage.alpha = 0.5
+        self.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+    }
+    
+    private func  touchUp() {
+        let scaleX = 1.0
+        let scaleY = 1.0
+        
+        UIView.animateKeyframes(withDuration: 0.4,
+                                delay: 0,
+                                options: [.beginFromCurrentState,
+                                          .allowUserInteraction],
+                                animations: {
+           
+            self.shoppingCartImage.alpha = 1
+            self.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+        })
     }
 }

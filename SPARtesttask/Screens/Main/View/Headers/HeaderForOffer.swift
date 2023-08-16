@@ -9,11 +9,13 @@ import UIKit
 
 final class HeaderForOffer: UICollectionReusableView {
     
+    //MARK: - Properties
     static let identifire = "HeaderForOffer"
     
     private let promotionOffer = UIImageView()
         .setMyStyle()
     
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
@@ -24,7 +26,7 @@ final class HeaderForOffer: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-  
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         promotionOffer.layer.cornerRadius = ProjectDesign.cornerRadius
@@ -48,7 +50,6 @@ extension HeaderForOffer: ConfigurableView {
     func configure(with model: ModelHeaderView) {
         promotionOffer.image = Images.promotion6
     }
- 
     typealias Model = ModelHeaderView
 }
 
