@@ -21,12 +21,6 @@ final class MainCell: UICollectionViewCell {
     
     private let sizeDesignation: (height: CGFloat, wieght: CGFloat) = (16, 16)
     
-    override var isHighlighted: Bool {
-          didSet {
-              isHighlighted ? touchDown() : touchUp()
-          }
-      }
-    
     private let currentPriceLabel = UILabel()
         .setMyStyle(
             numberOfLines: 1,
@@ -96,6 +90,12 @@ final class MainCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override var isHighlighted: Bool {
+          didSet {
+              isHighlighted ? touchDown() : touchUp()
+          }
+      }
     
     override func layoutSubviews() {
         super.layoutSubviews()
