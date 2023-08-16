@@ -73,7 +73,10 @@ final class MainViewController: UIViewController {
         mainView.collectionView.register(MainCell.self, forCellWithReuseIdentifier: MainCell.identifire)
         mainView.collectionView.register(HeaderForProducts.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderForProducts.identifire)
         mainView.collectionView.register(HeaderForOffer.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderForOffer.identifire)
-        mainView.collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 40, right: 0)
+        mainView.collectionView.contentInset = UIEdgeInsets(top: ProjectDesign.indentMain.top,
+                                                            left: ProjectDesign.indentMain.left,
+                                                            bottom: ProjectDesign.indentMain.bottom,
+                                                            right: ProjectDesign.indentMain.right)
     }
     
     private func configureNavigationBar() {
@@ -232,3 +235,4 @@ extension MainViewController: MainViewProtocol {
         
     }
 }
+
