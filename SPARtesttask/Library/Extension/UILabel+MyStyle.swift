@@ -21,12 +21,7 @@ extension UILabel {
         self.textColor = color
         return self
     }
-    
-    public func setHidden() -> Self {
-        self.isHidden = true
-        return self
-    }
-    
+
     public func setLineBreakMode(lineBreak: NSLineBreakMode ) -> Self {
         self.lineBreakMode = lineBreak
         return self

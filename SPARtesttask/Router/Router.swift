@@ -46,7 +46,6 @@ final class Router: RouterProtocol {
         let menu = tabBarController.createViewController(
             rootViewController: (assemblyBuilder.createMain(router: self)),
             image: Images.menu)
-//        navigationController.viewControllers = [menu]
         
         let profile = tabBarController.createViewController(
             rootViewController: (assemblyBuilder.createProfile(router: self)),

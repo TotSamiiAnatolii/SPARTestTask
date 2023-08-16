@@ -10,7 +10,7 @@ import UIKit
 protocol MainViewProtocol: AnyObject {
     
     func succes(models: Any)
-        
+    
     func failure(error: Error)
     
     func loading(state: StateDowload)
@@ -33,7 +33,7 @@ final class MainViewController: UIViewController {
     private let presenter: MainPresenterProtocol
     
     private let myDataSource = DataSource()
-
+    
     //MARK: - Init
     init(presenter: MainPresenter) {
         self.presenter = presenter
@@ -81,7 +81,7 @@ final class MainViewController: UIViewController {
         
         let searchBar = CitySelectionTextField(image: Images.geoTag, frame: CGRect(x: 0, y: 0, width: widthNavBar, height: heightNavBar))
         searchBar.text = "Москва, Москва и Московская область"
-
+        
         let menuButton = UIBarButtonItem(image: Images.listButton, landscapeImagePhone: nil, style: .done, target: self, action: nil)
         
         self.setupNavBar(leftItem: nil, rightItem: menuButton, titleView: searchBar)
@@ -138,7 +138,7 @@ final class MainViewController: UIViewController {
             guard let section = SectionType(rawValue: indexPath.section) else { return UICollectionReusableView()}
             
             switch section {
-            
+                
             case .offer:
                 guard let view = collectionView.dequeueReusableSupplementaryView(
                     ofKind: kind,
@@ -153,7 +153,7 @@ final class MainViewController: UIViewController {
                     ofKind: kind,
                     withReuseIdentifier: HeaderForProducts.identifire,
                     for: indexPath) as? HeaderForProducts else { return UICollectionReusableView() }
-
+                
                 view.configure(with: ModelHeaderView(title: section.nameTitle))
                 return view
                 
@@ -162,7 +162,7 @@ final class MainViewController: UIViewController {
                     ofKind: kind,
                     withReuseIdentifier: HeaderForProducts.identifire,
                     for: indexPath) as? HeaderForProducts
-
+                
                 view?.configure(with: ModelHeaderView(title: section.nameTitle))
                 return view
                 
@@ -177,7 +177,7 @@ final class MainViewController: UIViewController {
                             offers: [ModelOfferCell],
                             main: [ModelMainCell],
                             sweetMood: [ModelMainCell]) {
-    
+        
         var snapshot = NSDiffableDataSourceSnapshot<SectionType, AnyHashable>()
         snapshot.appendSections([.stories, .banner, .offer, .main, .sweetMood])
         snapshot.appendItems(stories, toSection: .stories)
@@ -204,8 +204,8 @@ final class MainViewController: UIViewController {
             case .sweetMood:
                 return self.compositionalLayout.setProductFlowLayout()
             case .none:
-               return nil
-
+                return nil
+                
             }
         }
         return layout

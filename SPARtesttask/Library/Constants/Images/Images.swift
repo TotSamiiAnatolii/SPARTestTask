@@ -21,6 +21,8 @@ enum Images {
     
     static let shoppingCart1: UIImage = UIImage(named: "shopping-cart")!.withTintColor(.blue)
     
+    static let weight: UIImage = UIImage(named: "weight")!
+    
     //MARK: NavigationBarItem
     static let listButton: UIImage = UIImage(named: "menu")!
     

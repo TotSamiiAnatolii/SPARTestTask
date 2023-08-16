@@ -32,24 +32,7 @@ extension UIView {
         self.layer.cornerRadius = radius
         return self
     }
-    
-    public func setShadows(color: CGColor, width: CGFloat, height: CGFloat, radius: CGFloat, opacity: Float ) -> Self {
-        self.layer.shadowColor = color
-        self.layer.shadowOffset = CGSize(width: width, height: height)
-        self.layer.shadowRadius = radius
-        self.layer.shadowOpacity = opacity
-        self.layer.masksToBounds = false
-        return self
-    }
-    
-    public func setShadow(color: CGColor, width: CGFloat, height: CGFloat, radius: CGFloat, opacity: Float ) {
-        self.layer.shadowColor = color
-        self.layer.shadowOffset = CGSize(width: width, height: height)
-        self.layer.shadowRadius = radius
-        self.layer.shadowOpacity = opacity
-        self.layer.masksToBounds = false
-    }
-    
+        
     public func round() -> Self {
         let width = bounds.width < bounds.height ? bounds.width : bounds.height
         let mask = CAShapeLayer()

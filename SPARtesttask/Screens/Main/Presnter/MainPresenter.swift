@@ -21,7 +21,7 @@ final class MainPresenter: MainPresenterProtocol {
     
     private var stateView: MainViewState = .loading {
         didSet {
-            
+            setViewState(state: stateView)
         }
     }
     
