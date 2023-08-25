@@ -9,7 +9,7 @@ import UIKit
 
 enum Colors {
     
-    static let fontStories = #colorLiteral(red: 0.3407603562, green: 0.3407603562, blue: 0.3407603562, alpha: 1)
+    static let fontStories = #colorLiteral(red: 0.1490196078, green: 0.1647058824, blue: 0.2196078431, alpha: 1)
     
     static let priceProductCell = #colorLiteral(red: 0.1803068681, green: 0.1803068681, blue: 0.1803068681, alpha: 1)
     

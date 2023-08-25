@@ -92,10 +92,10 @@ final class MainCell: UICollectionViewCell {
     }
     
     override var isHighlighted: Bool {
-          didSet {
-              isHighlighted ? touchDown() : touchUp()
-          }
-      }
+        didSet {
+            isHighlighted ? touchDown() : touchUp()
+        }
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
